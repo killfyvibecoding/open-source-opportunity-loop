@@ -1,7 +1,7 @@
 interface:
   display_name: "Open Source Opportunity Loop"
-  short_description: "Turn ideas into open-source MVPs and business plans"
-  default_prompt: "Use $open-source-opportunity-loop to turn my product idea into an open-source MVP and monetization plan."
+  short_description: "Clarify ideas, find open-source bases, and choose the next MVP step"
+  default_prompt: "Use $open-source-opportunity-loop to clarify my product idea, find reusable open-source foundations, and choose the next validated MVP step."
 
 policy:
   allow_implicit_invocation: true
