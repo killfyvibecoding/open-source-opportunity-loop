@@ -1,0 +1,108 @@
+# Search Workflow
+
+## Intent schema
+
+Turn a natural-language request into this object before searching:
+
+```yaml
+industry: ""
+customer: ""
+pain: ""
+product_form: "saas | private-deployment | app | plugin | service | game | content"
+region: "china | overseas | both"
+ai_role: "none | assistant | rag | workflow | agent | model | multimodal"
+constraints:
+  team: ""
+  budget: ""
+  deadline: ""
+  hosting: ""
+  language: ""
+goal: "validate | ship-mvp | sell-service | build-business"
+```
+
+If the user gives only an idea, infer the fields and label assumptions explicitly.
+
+## Candidate record
+
+Every recommended project should be normalized to:
+
+```yaml
+name: ""
+official_url: ""
+repository_url: ""
+role: "direct-base | module | ai-capability | market-reference"
+what_it_does: ""
+license: "unknown"
+maintenance_signal: "unknown"
+deployment: "unknown"
+fit: "high | medium | low"
+commercial_use: "direct | conditions | reference-only | avoid"
+risks: []
+evidence: []
+```
+
+Do not fill unknown fields with guesses.
+
+## Recommendation score
+
+Use the score as a decision aid, not as an objective truth:
+
+```text
+business fit        30
+license clarity     20
+maintenance         15
+deployment effort   15
+regional fit        10
+monetization fit    10
+```
+
+Explain the two or three factors that drive the score. A high-star project with a weak license or no recent maintenance should not rank first.
+
+## Route selection
+
+Choose the route based on the user's goal:
+
+- **Validate**: prioritize a narrow workflow, manual operations, and three target users.
+- **Ship MVP**: prioritize a direct base, low deployment effort, and one measurable outcome.
+- **Sell service**: prioritize private deployment, data control, customization, and support.
+- **Build SaaS**: prioritize tenant isolation, billing, observability, upgrades, and license compatibility.
+- **Build game or traffic product**: use the Game collection and current distribution evidence before selecting a technical base.
+
+## Answer template
+
+```markdown
+## 结论
+
+一句话给出推荐方向。
+
+## 需求理解
+
+列出行业、客户、痛点、产品形态和关键假设。
+
+## 推荐项目
+
+| 项目 | 角色 | 为什么匹配 | License/活跃度 | 商业化判断 |
+|---|---|---|---|---|
+
+## 组合方案
+
+说明哪些项目组合在一起，以及数据如何流动。
+
+## 三条路线
+
+### 7 天 MVP
+### 30 天产品
+### 私有部署/服务
+
+## 变现假设
+
+区分已观察信号、推断和待验证实验。
+
+## 风险
+
+License、模型、数据、部署、获客和成本风险。
+
+## 下一步
+
+只给一个最重要的下一步。
+```

@@ -1,0 +1,14 @@
+name: Validate Skill
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Validate required Skill files
+        run: python3 scripts/validate_skill.py
