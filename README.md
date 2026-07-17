@@ -8,7 +8,7 @@
 
 ### 简体中文 | [English](README.en.md)
 
-> 告诉我想做什么，自动帮我找到开源底座、验证技术风险，并给出商业化路径。
+> 告诉我想做什么，自动澄清业务切口、找到开源底座、验证风险，并给出下一步 MVP 路线。
 
 ## ⚠️ 重要说明
 
@@ -29,20 +29,30 @@ Skill 推荐的第三方项目、模型、数据集、字体、图片和商标�
 ```text
 用户想法
   ↓
-需求结构化
+状态识别与意图路由
   ↓
-开源项目发现
+问题澄清与产品定位
   ↓
-技术、许可证和活跃度核验
+开源项目发现与组合
   ↓
-项目组合
+技术、许可证和商业闸门
   ↓
-市场和变现验证
+MVP / 私有部署 / 服务路线
   ↓
-7 天 MVP / 30 天产品 / 私有部署方案
+一个可执行产物
   ↓
-用户反馈和下一轮推荐
+用户反馈 → 动态选择下一步
 ```
+
+## 一个入口，动态选择下一步
+
+用户不需要记住内部模块，直接说自然语言即可：
+
+```text
+我想给建材厂做一个 AI 和视频系统，但方向很模糊。
+```
+
+Skill 会先进入“定位澄清”，而不是马上罗列开源项目。之后会根据结果自动切换到项目发现、License 核验、技术组合、商业验证、7 天 MVP、私有部署或决策记录。每轮只推进一个最重要的状态；用户可以直接说“继续”，从上一次结果接着推进。
 
 ## 三层决策框架
 
@@ -96,14 +106,21 @@ $open-source-opportunity-loop
 我想做一个面向中国陶瓷外贸企业的 AI 内容系统，帮我找开源底座，检查 License，给出 7 天 MVP 和变现方案。
 ```
 
-### 示例二：寻找可商业化项目
+### 示例二：先定位模糊想法
+
+```text
+使用 $open-source-opportunity-loop。
+我想给建材厂做一个 AI 和视频系统，但方向很模糊，先帮我清晰定位。
+```
+
+### 示例三：寻找可商业化项目
 
 ```text
 使用 $open-source-opportunity-loop。
 找 10 个可以在 30 天内改造成 B2B SaaS 的开源项目，并说明哪些可以直接商用。
 ```
 
-### 示例三：组合多个项目
+### 示例四：组合多个项目
 
 ```text
 使用 $open-source-opportunity-loop。
@@ -114,14 +131,14 @@ $open-source-opportunity-loop
 
 每次推荐应包含：
 
-1. 需求理解和关键假设；
-2. 直接底座、模块、AI 能力和市场参考；
-3. License、维护、部署和区域适配风险；
-4. 推荐的项目组合；
-5. 7 天 MVP；
-6. 30 天产品版本；
-7. 私有部署或服务路线；
-8. 变现假设和下一步验证实验。
+1. 当前路由、需求理解和关键假设；
+2. 证据缺口和必要问题；
+3. 直接底座、模块、AI 能力和市场参考；
+4. License、维护、部署和区域适配风险；
+5. 一个推荐路线及对应产物；
+6. 一个最重要的下一步验证实验。
+
+只有当用户进入相应阶段时，才展开 7 天 MVP、30 天产品或私有部署路线。
 
 ## 快速开始
 
@@ -139,7 +156,7 @@ python3 scripts/validate_skill.py
 SKILL.md                         Skill 核心流程
 agents/openai.yaml               Skill 展示和调用信息
 references/                      来源、搜索、许可证和变现规则
-examples/                        陶瓷外贸、内容生产、游戏流量示例
+examples/                        陶瓷外贸、内容生产、游戏流量、续接 Loop 示例
 scripts/validate_skill.py        无第三方依赖的结构验证脚本
 .github/                         CI、Issue 和 PR 模板
 README.md                        中文项目说明
@@ -165,6 +182,9 @@ README.zh-CN.md                  完整中文文档
 - [完整中文文档](README.zh-CN.md)
 - [英文文档](README.en.md)
 - [来源目录](references/source-catalog.md)
+- [动态路由](references/interaction-router.md)
 - [搜索流程](references/search-workflow.md)
 - [许可证与项目健康度](references/license-and-health.md)
 - [变现手册](references/monetization-playbook.md)
+- [状态与反馈](references/state-and-feedback.md)
+- [启发与授权边界](references/inspiration-and-boundaries.md)

@@ -8,7 +8,7 @@
 
 ### [简体中文](README.md) | English
 
-> Turn a product idea into reusable open-source foundations, a testable MVP, and a practical commercialization path.
+> Clarify a product idea, find reusable open-source foundations, verify risk, and choose the next validated MVP step.
 
 ## ⚠️ Important note
 
@@ -29,20 +29,30 @@ Third-party projects, models, datasets, fonts, images, and trademarks have their
 ```text
 User idea
   ↓
-Intent extraction
+State and intent routing
   ↓
-Open-source discovery
+Problem clarification and positioning
   ↓
-Technical, license, and maintenance verification
+Open-source discovery and composition
   ↓
-Solution composition
+Technical, license, and commercial gates
   ↓
-Market and monetization validation
+MVP / private-deployment / service route
   ↓
-7-day MVP / 30-day product / private-deployment plan
+One actionable artifact
   ↓
-User feedback and refined recommendation
+User feedback → dynamic next route
 ```
+
+## One entry point, dynamic next steps
+
+Users do not need to select internal modules. They can simply say:
+
+```text
+I want to build an AI and video system for building-material factories, but the direction is still vague.
+```
+
+The Skill first enters **Positioning** instead of dumping open-source projects. It then moves to discovery, adoption review, composition, commercial validation, MVP execution, private deployment, or decision records based on the current bottleneck. Each turn advances one state and ends with one next action. “Continue” resumes from the previous result.
 
 ## Three-layer framework
 
@@ -96,18 +106,23 @@ Use $open-source-opportunity-loop.
 I want to build an AI content system for Chinese ceramic exporters. Find reusable open-source bases, check licenses, and give me a 7-day MVP and monetization plan.
 ```
 
+```text
+Use $open-source-opportunity-loop.
+I want to build an AI and video system for building-material factories, but the direction is vague. Help me position it first.
+```
+
 ## Standard output
 
 The Skill returns:
 
-1. intent and assumptions;
-2. direct bases, modules, AI capabilities, and market references;
-3. license, maintenance, deployment, and regional risks;
-4. a recommended composition;
-5. a 7-day MVP;
-6. a 30-day product route;
-7. a private-deployment or service route;
-8. monetization hypotheses and the next validation experiment.
+1. the current route and intent;
+2. key assumptions, evidence gaps, and one necessary question;
+3. direct bases, modules, AI capabilities, and market references when needed;
+4. license, maintenance, deployment, and regional risks;
+5. one recommended route and its artifact;
+6. one highest-value next validation action.
+
+The Skill expands into a 7-day MVP, 30-day product, or private-deployment plan only when the user's current stage requires it.
 
 ## Quick start
 
@@ -124,8 +139,8 @@ Copy the directory into your Agent's Skills directory and invoke it with `$open-
 ```text
 SKILL.md                         Core Skill workflow
 agents/openai.yaml               Skill UI metadata and invocation prompt
-references/                      Source, search, license, and monetization guidance
-examples/                        Worked product scenarios
+references/                      Source, routing, state, license, and monetization guidance
+examples/                        Worked product and continuation scenarios
 scripts/validate_skill.py        Dependency-free structure validation
 .github/                         CI, issue, and pull-request templates
 README.md                        Chinese project documentation
@@ -151,6 +166,9 @@ This Skill provides practical research guidance, not legal, financial, or compli
 - [Chinese documentation](README.md)
 - [Extended Chinese documentation](README.zh-CN.md)
 - [Source catalog](references/source-catalog.md)
+- [Interaction router](references/interaction-router.md)
 - [Search workflow](references/search-workflow.md)
 - [License and project health](references/license-and-health.md)
 - [Monetization playbook](references/monetization-playbook.md)
+- [State and feedback](references/state-and-feedback.md)
+- [Inspiration and license boundaries](references/inspiration-and-boundaries.md)
