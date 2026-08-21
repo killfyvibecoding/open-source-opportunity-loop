@@ -50,6 +50,12 @@ Use this catalog to route research. The websites are complementary; none should 
 | IndieTools | Which indie SaaS and AI tools are listed? | https://www.indietools.app/ |
 | Open Source Alternative | What paid products have open-source alternatives? | https://opensourcealternative.to/ |
 
+## Product decision references
+
+| Source | Best question | Link |
+|---|---|---|
+| PM Skills Marketplace | Which product-discovery, assumption, strategy, and commercialization frameworks can inform the decision? | https://github.com/phuryn/pm-skills |
+
 ## Source handling rules
 
 1. Prefer the official repository or foundation page for final evidence.

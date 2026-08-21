@@ -20,6 +20,7 @@ Use the first route that resolves the user's current bottleneck.
 
 | Current signal | Route | Deliverable |
 |---|---|---|
+| “我应该做什么产品/用户是谁/这个想法值不值得做/先梳理产品思路” | Product discovery | outcome、customer job、opportunities、solution hypotheses、riskiest assumption、experiment |
 | “我想做一个……” but buyer or job is unclear | Positioning | three problem framings, one recommendation, one question |
 | “找开源项目/底座” | Discovery | ranked candidates with role and evidence |
 | “这个项目能不能用/商用” | Adoption review | license, maintenance, deployment, and risk classification |
@@ -38,6 +39,19 @@ buyer + high-frequency scenario + input + AI/video action + measurable business 
 ```
 
 Do not define the product as “an AI and video platform” until the customer, workflow, and outcome are clear.
+
+## Product discovery route
+
+Read [product-thinking.md](product-thinking.md). Produce a compact product brief before searching for repositories:
+
+1. define one desired outcome;
+2. identify the daily user, paying buyer, and job-to-be-done;
+3. map two or three customer opportunities;
+4. generate at least three solution hypotheses;
+5. prioritize the riskiest assumption;
+6. design one behavior-based experiment with a threshold.
+
+If the user already has a validated workflow, skip back to the smallest needed route. Product frameworks are decision aids, not a requirement to complete every canvas.
 
 ## Continuation route
 
@@ -61,3 +75,4 @@ Every routed response should make four things visible:
 3. uncertainty or evidence gap;
 4. one next action or one focused question.
 
+When the Product discovery route is selected, the artifact also makes the user, buyer, job, outcome, opportunity, riskiest assumption, and experiment visible.

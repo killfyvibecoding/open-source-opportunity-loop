@@ -54,7 +54,7 @@ MVP / 私有部署 / 服务路线
 
 Skill 会先进入“定位澄清”，而不是马上罗列开源项目。之后会根据结果自动切换到项目发现、License 核验、技术组合、商业验证、7 天 MVP、私有部署或决策记录。每轮只推进一个最重要的状态；用户可以直接说“继续”，从上一次结果接着推进。
 
-## 三层决策框架
+## 四层决策框架
 
 ### 1. 项目发现层
 
@@ -90,6 +90,16 @@ Skill 会先进入“定位澄清”，而不是马上罗列开源项目。之�
 - Open Source Alternative。
 
 完整来源和用途见 [references/source-catalog.md](references/source-catalog.md)。
+
+## 4. 产品思考层
+
+本 Skill 已融合 [phuryn/pm-skills](https://github.com/phuryn/pm-skills) 的产品发现思路，但保留为一个更适合“开源项目 → MVP → 变现”的轻量层：
+
+```text
+目标结果 → 客户任务与机会点 → 解决方案假设 → 最大风险假设 → 最小验证实验 → 开源底座与 MVP
+```
+
+它会帮助你先回答“为谁解决什么问题”，再决定“用哪个开源项目实现”。支持机会树、假设优先级、实验设计、MVP 边界和 Lean Canvas；不会要求每次都填完整套产品文档。
 
 ## 使用方式
 
@@ -132,11 +142,12 @@ $open-source-opportunity-loop
 每次推荐应包含：
 
 1. 当前路由、需求理解和关键假设；
-2. 证据缺口和必要问题；
-3. 直接底座、模块、AI 能力和市场参考；
-4. License、维护、部署和区域适配风险；
-5. 一个推荐路线及对应产物；
-6. 一个最重要的下一步验证实验。
+2. 产品思考：用户、买方、客户任务、目标结果、机会点和最大风险假设；
+3. 证据缺口和必要问题；
+4. 直接底座、模块、AI 能力和市场参考；
+5. License、维护、部署和区域适配风险；
+6. 一个推荐路线及对应产物；
+7. 一个最重要的下一步验证实验。
 
 只有当用户进入相应阶段时，才展开 7 天 MVP、30 天产品或私有部署路线。
 
@@ -156,6 +167,7 @@ python3 scripts/validate_skill.py
 SKILL.md                         Skill 核心流程
 agents/openai.yaml               Skill 展示和调用信息
 references/                      来源、搜索、许可证和变现规则
+references/product-thinking.md   产品发现、假设、实验和 MVP 方法
 examples/                        陶瓷外贸、内容生产、游戏流量、续接 Loop 示例
 scripts/validate_skill.py        无第三方依赖的结构验证脚本
 .github/                         CI、Issue 和 PR 模板
@@ -183,6 +195,7 @@ README.zh-CN.md                  完整中文文档
 - [英文文档](README.en.md)
 - [来源目录](references/source-catalog.md)
 - [动态路由](references/interaction-router.md)
+- [产品思考](references/product-thinking.md)
 - [搜索流程](references/search-workflow.md)
 - [许可证与项目健康度](references/license-and-health.md)
 - [变现手册](references/monetization-playbook.md)

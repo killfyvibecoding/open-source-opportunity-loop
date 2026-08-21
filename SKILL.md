@@ -1,6 +1,6 @@
 ---
 name: open-source-opportunity-loop
-description: "Turn a vague product idea into a focused business opportunity, an open-source-backed MVP, and a practical commercialization path. Use when the user wants to discover reusable projects, evaluate technical or license fit, combine open-source components, clarify a product direction, or decide the next step after a previous analysis."
+description: "Use when a user has a vague product idea, needs product discovery or positioning, wants to find reusable open-source projects, evaluate technical or license fit, combine components, test assumptions, or choose the next MVP step."
 ---
 
 # Open Source Opportunity Loop
@@ -14,9 +14,11 @@ It is not a directory dump, a fixed checklist, or a promise that every listed pr
 ## Operating principles
 
 - Start from the user's current intent, not from a preselected tool or source.
+- Start product decisions from a desired outcome, customer job, and opportunity before selecting a feature or repository.
 - Use one route and one next action per response. Do not force a fixed chain such as A -> B -> C.
 - Ask at most one question when the missing answer would change the route materially.
 - Separate evidence, inference, recommendation, and experiment.
+- Treat product discovery as a loop: outcome -> opportunity -> solution hypothesis -> experiment -> evidence.
 - Verify the original repository, license, dependencies, and maintenance before recommending direct reuse.
 - Prefer a narrow paid workflow over a broad platform when the idea is still vague.
 - Keep state in the conversation by default. Only write project notes or decision records when the user asks or approves it.
@@ -31,6 +33,7 @@ Select exactly one mode:
 | Mode | Trigger | First output |
 |---|---|---|
 | Onboarding | The user asks how to use the Skill or gives no concrete task | Explain the available outcomes and ask for the user's real idea |
+| Product discovery | The user asks what product to build, who it is for, what problem matters, or which assumptions to test | Define the outcome, job, opportunities, solution hypotheses, and first experiment |
 | Positioning | The idea is broad, ambiguous, or combines several capabilities | Produce up to three business problem framings and recommend one |
 | Discovery | The user asks what open-source projects can be reused | Search and rank candidates by role |
 | Adoption review | The user asks whether a named project can be used or commercialized | Check license, health, deployment, dependencies, and restrictions |
@@ -67,6 +70,13 @@ buyer: ""
 scenario: ""
 pain: ""
 desired_outcome: ""
+user: ""
+job_to_be_done: ""
+opportunity: ""
+solution_hypotheses: []
+riskiest_assumptions: []
+success_metric: ""
+product_stage: "discovery | validation | MVP | growth"
 product_form: "saas | private-deployment | app | plugin | service | game | content | index"
 region: "china | overseas | both"
 ai_role: "none | assistant | rag | workflow | agent | model | multimodal"
@@ -89,11 +99,27 @@ target buyer + high-frequency scenario + measurable result + delivery form
 
 Rank the positionings by urgency, ability to pay, data availability, delivery difficulty, and speed of validation. State which facts are unknown. Ask one focused question only if a choice is necessary to continue.
 
+### Product thinking gate
+
+Before searching for a technical base, build the smallest product brief. Use the sequence **outcome -> opportunity -> solution -> experiment**. The working chain is:
+
+```text
+desired outcome
+  -> customer job / unmet need
+  -> opportunity worth solving
+  -> at least three solution hypotheses
+  -> riskiest assumption
+  -> smallest behavior-based experiment
+```
+
+Use [references/product-thinking.md](references/product-thinking.md) when the user is deciding what to build, comparing product directions, brainstorming, prioritizing features, or validating an idea. A repository is a candidate solution only after the product brief identifies the job it serves. If the brief is still unclear, return a positioning or discovery artifact instead of a project list.
+
 ### Phase 2: Select the research route
 
 Route only to the smallest useful source set:
 
 - **Reuse discovery**: the four baseline collections, GitHub, Awesome Selfhosted, HelloGitHub, OpenResource, Open Source Atlas, and Gitee.
+- **Product discovery**: outcome and opportunity mapping, customer jobs, assumption prioritization, experiments, and MVP definition. Use the product-thinking reference before technical search.
 - **AI and video capability**: Hugging Face, Papers With Code, official model repositories, `awesome-agents`, `awesome-llm-apps`, FFmpeg, video workflow projects, and relevant official documentation.
 - **Technical adoption**: the original repository, releases, commits, issues, pull requests, dependency files, Libraries.io, and LFX Insights when available.
 - **Market and distribution**: Product Hunt, Indie Hackers, IndieTools, Chinese industry cases, WeChat or enterprise WeChat workflows, short-video platforms, and relevant current market evidence.
@@ -129,6 +155,8 @@ license: "unknown"
 maintenance_signal: "unknown"
 deployment: "unknown"
 fit: "high | medium | low"
+product_fit: "high | medium | low"
+validation_role: "prototype | experiment | MVP | production"
 commercial_use: "direct | conditions | reference-only | avoid"
 risks: []
 evidence: []
@@ -137,12 +165,13 @@ evidence: []
 Use this score only as a decision aid:
 
 ```text
-business fit        30
+business fit        20
+product fit         20
 license clarity     20
 maintenance         15
 deployment effort   15
-regional fit        10
-monetization fit    10
+regional fit         5
+monetization fit     5
 ```
 
 Explain the two or three factors that drive the ranking. A high-star project with a weak license or no meaningful maintenance should not rank first.
@@ -165,6 +194,7 @@ Classify every project as **direct reuse**, **reuse with conditions**, **referen
 For the recommended direction, identify:
 
 - the paying buyer and the daily user;
+- the customer job, opportunity, and desired outcome;
 - the expensive or frequent job being solved;
 - the buyer's current workaround;
 - the event that creates willingness to pay;
@@ -186,6 +216,7 @@ For a product idea, compare these routes internally, but recommend only one curr
 
 | Route | Use when | Minimum output |
 |---|---|---|
+| Product discovery experiment | The product direction or value is uncertain | one hypothesis, one behavior-based test, one success threshold |
 | 7-day MVP | The problem or buyer still needs validation | one workflow, manual fallback, three test users, one success metric |
 | 30-day product | The workflow has evidence and repeats | product architecture, auth, data, billing, deployment, metrics |
 | Private deployment/service | Data control, customization, or trust matters | delivery scope, price hypothesis, installation, support boundary |
@@ -201,6 +232,7 @@ Use the user's language and return:
 ```markdown
 ## 结论 / Recommendation
 ## 当前路由 / Current route
+## 产品思考 / Product thinking
 ## 需求理解与假设 / Intent and assumptions
 ## 推荐项目 / Candidate projects
 ## 技术与许可证闸门 / Adoption gate
@@ -250,6 +282,7 @@ Do not silently create or modify local files, databases, or external services.
 ## Quality and safety rules
 
 - Prefer a small coherent project combination over a long list.
+- Do not use a framework name as a substitute for evidence. A canvas, opportunity tree, or score is a working hypothesis, not proof of demand.
 - Never imply that inclusion in a collection makes a project commercially usable.
 - Never invent current stars, releases, prices, or maintenance status; browse and cite current sources when needed.
 - Treat historical projects as learning and survival signals, not proof of current activity.
@@ -263,6 +296,7 @@ Do not silently create or modify local files, databases, or external services.
 - [Source catalog](references/source-catalog.md)
 - [Interaction router](references/interaction-router.md)
 - [Search workflow](references/search-workflow.md)
+- [Product thinking](references/product-thinking.md)
 - [License and health](references/license-and-health.md)
 - [Monetization playbook](references/monetization-playbook.md)
 - [State and feedback](references/state-and-feedback.md)

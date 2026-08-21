@@ -2,6 +2,7 @@
 """Validate the repository's required Skill files without third-party packages."""
 
 from pathlib import Path
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,6 +13,8 @@ REQUIRED = [
     ROOT / "references" / "search-workflow.md",
     ROOT / "references" / "license-and-health.md",
     ROOT / "references" / "monetization-playbook.md",
+    ROOT / "references" / "product-thinking.md",
+    ROOT / "scripts" / "test_product_thinking.py",
 ]
 
 
@@ -29,6 +32,17 @@ def main() -> int:
     if "[TODO" in skill:
         print("SKILL.md still contains TODO placeholders.")
         return 1
+
+    product_test = subprocess.run(
+        ["python3", str(ROOT / "scripts" / "test_product_thinking.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if product_test.returncode:
+        print(product_test.stdout, end="")
+        print(product_test.stderr, end="")
+        return product_test.returncode
 
     print("Skill structure is valid.")
     return 0
