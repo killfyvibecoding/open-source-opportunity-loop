@@ -54,7 +54,7 @@ I want to build an AI and video system for building-material factories, but the 
 
 The Skill first enters **Positioning** instead of dumping open-source projects. It then moves to discovery, adoption review, composition, commercial validation, MVP execution, private deployment, or decision records based on the current bottleneck. Each turn advances one state and ends with one next action. “Continue” resumes from the previous result.
 
-## Three-layer framework
+## Four-layer framework
 
 ### 1. Project discovery
 
@@ -91,6 +91,16 @@ Answers: “Who pays, how do they pay, and what should I validate first?”
 
 See [references/source-catalog.md](references/source-catalog.md) for the full source map.
 
+## 4. Product thinking layer
+
+This Skill now integrates the product-discovery ideas from [phuryn/pm-skills](https://github.com/phuryn/pm-skills), kept as a lightweight layer for the path from open-source reuse to MVP and monetization:
+
+```text
+Desired outcome → Customer job and opportunity → Solution hypotheses → Riskiest assumption → Smallest validation experiment → Open-source base and MVP
+```
+
+It answers “whose problem are we solving?” before “which repository should we use?”. It supports opportunity mapping, assumption prioritization, experiment design, MVP boundaries, and Lean Canvas when needed—without forcing a complete PM document every time.
+
 ## Use it
 
 Clone the repository into the Skills directory used by your Agent and invoke:
@@ -116,11 +126,12 @@ I want to build an AI and video system for building-material factories, but the 
 The Skill returns:
 
 1. the current route and intent;
-2. key assumptions, evidence gaps, and one necessary question;
-3. direct bases, modules, AI capabilities, and market references when needed;
-4. license, maintenance, deployment, and regional risks;
-5. one recommended route and its artifact;
-6. one highest-value next validation action.
+2. the product brief: user, buyer, customer job, desired outcome, opportunity, and riskiest assumption;
+3. key evidence gaps and one necessary question;
+4. direct bases, modules, AI capabilities, and market references when needed;
+5. license, maintenance, deployment, and regional risks;
+6. one recommended route and its artifact;
+7. one highest-value next validation action.
 
 The Skill expands into a 7-day MVP, 30-day product, or private-deployment plan only when the user's current stage requires it.
 
@@ -140,6 +151,7 @@ Copy the directory into your Agent's Skills directory and invoke it with `$open-
 SKILL.md                         Core Skill workflow
 agents/openai.yaml               Skill UI metadata and invocation prompt
 references/                      Source, routing, state, license, and monetization guidance
+references/product-thinking.md   Product discovery, assumptions, experiments, and MVP guidance
 examples/                        Worked product and continuation scenarios
 scripts/validate_skill.py        Dependency-free structure validation
 .github/                         CI, issue, and pull-request templates
@@ -166,6 +178,7 @@ This Skill provides practical research guidance, not legal, financial, or compli
 - [Chinese documentation](README.md)
 - [Extended Chinese documentation](README.zh-CN.md)
 - [Source catalog](references/source-catalog.md)
+- [Product thinking](references/product-thinking.md)
 - [Interaction router](references/interaction-router.md)
 - [Search workflow](references/search-workflow.md)
 - [License and project health](references/license-and-health.md)

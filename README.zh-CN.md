@@ -68,6 +68,16 @@ Skill 不要求用户记住内部模块。直接说“我想做什么”即可�
 
 完整来源和用途见 [references/source-catalog.md](references/source-catalog.md)。
 
+## 产品思考层
+
+本 Skill 融合了 [phuryn/pm-skills](https://github.com/phuryn/pm-skills) 中产品发现、机会树、假设优先级、实验设计和产品战略的思路，并将其压缩成适合本项目的产品决策层：
+
+```text
+目标结果 → 客户任务 → 机会点 → 解决方案假设 → 风险假设 → 验证实验 → MVP
+```
+
+以后不会直接从“我想做 AI + 视频”跳到技术选型，而是先判断用户、买方、任务、结果和最大风险。只有产品假设足够清晰后，才进入开源项目发现与组合。详细规则见 [references/product-thinking.md](references/product-thinking.md)。
+
 ## 使用方式
 
 将仓库复制到你的 Agent 使用的 Skills 目录，然后调用：
@@ -103,11 +113,12 @@ $open-source-opportunity-loop
 每次推荐应包含：
 
 1. 当前路由、需求理解和关键假设；
-2. 证据缺口和必要问题；
-3. 直接底座、模块、AI 能力和市场参考；
-4. License、维护、部署和区域适配风险；
-5. 一个推荐路线及对应产物；
-6. 一个最重要的下一步验证实验。
+2. 产品思考：用户、买方、客户任务、目标结果、机会点和最大风险假设；
+3. 证据缺口和必要问题；
+4. 直接底座、模块、AI 能力和市场参考；
+5. License、维护、部署和区域适配风险；
+6. 一个推荐路线及对应产物；
+7. 一个最重要的下一步验证实验。
 
 只有当用户进入相应阶段时，才展开 7 天 MVP、30 天产品或私有部署路线。
 
@@ -117,6 +128,7 @@ $open-source-opportunity-loop
 SKILL.md                         Skill 核心流程
 agents/openai.yaml               Skill 展示和调用信息
 references/                      来源、搜索、许可证和变现规则
+references/product-thinking.md   产品发现、假设、实验和 MVP 方法
 examples/                        具体业务和续接 Loop 示例
 scripts/validate_skill.py        无第三方依赖的结构验证脚本
 .github/                         CI、Issue 和 PR 模板
@@ -143,6 +155,7 @@ python3 scripts/validate_skill.py
 ## 相关文档
 
 - [来源目录](references/source-catalog.md)
+- [产品思考](references/product-thinking.md)
 - [动态路由](references/interaction-router.md)
 - [搜索流程](references/search-workflow.md)
 - [许可证与项目健康度](references/license-and-health.md)

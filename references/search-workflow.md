@@ -6,6 +6,7 @@ Search is not always the first step. First select the current route:
 
 ```text
 vague idea -> positioning
+product direction or value unclear -> product discovery
 clear idea without candidates -> discovery
 named repository -> adoption review
 candidate list -> composition
@@ -23,7 +24,12 @@ Turn a natural-language request into this object before searching:
 ```yaml
 industry: ""
 customer: ""
+buyer: ""
+job_to_be_done: ""
 pain: ""
+desired_outcome: ""
+opportunity: ""
+success_metric: ""
 product_form: "saas | private-deployment | app | plugin | service | game | content"
 region: "china | overseas | both"
 ai_role: "none | assistant | rag | workflow | agent | model | multimodal"
@@ -35,6 +41,7 @@ constraints:
   hosting: ""
   language: ""
 goal: "validate | ship-mvp | sell-service | build-business"
+product_stage: "discovery | validation | MVP | growth"
 ```
 
 If the user gives only an idea, infer the fields and label assumptions explicitly.
@@ -64,6 +71,8 @@ license: "unknown"
 maintenance_signal: "unknown"
 deployment: "unknown"
 fit: "high | medium | low"
+product_fit: "high | medium | low"
+validation_role: "prototype | experiment | MVP | production"
 commercial_use: "direct | conditions | reference-only | avoid"
 risks: []
 evidence: []
@@ -76,12 +85,13 @@ Do not fill unknown fields with guesses.
 Use the score as a decision aid, not as an objective truth:
 
 ```text
-business fit        30
+business fit        20
+product fit         20
 license clarity     20
 maintenance         15
 deployment effort   15
-regional fit        10
-monetization fit    10
+regional fit         5
+monetization fit     5
 ```
 
 Explain the two or three factors that drive the score. A high-star project with a weak license or no recent maintenance should not rank first.
@@ -96,6 +106,7 @@ Choose the route based on the user's goal:
 - **Build SaaS**: prioritize tenant isolation, billing, observability, upgrades, and license compatibility.
 - **Build game or traffic product**: use the Game collection and current distribution evidence before selecting a technical base.
 - **Positioning**: translate broad capabilities into a buyer, recurring scenario, and measurable business result before recommending architecture.
+- **Product discovery**: define the desired outcome, customer job, opportunity, solution hypotheses, riskiest assumption, and experiment before searching for repositories.
 - **Continue**: inspect the previous result and advance one state only; do not repeat completed research.
 
 ## Answer template
@@ -111,7 +122,11 @@ Choose the route based on the user's goal:
 
 ## 需求理解
 
-列出行业、客户、痛点、产品形态和关键假设。
+列出行业、用户、买方、客户任务、目标结果、机会点、产品形态和关键假设。
+
+## 产品思考
+
+如果本轮属于产品发现或定位，先输出 outcome -> opportunity -> solution -> experiment，并明确最大风险假设和成功阈值。
 
 ## 推荐项目
 
